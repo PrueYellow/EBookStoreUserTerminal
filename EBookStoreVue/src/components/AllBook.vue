@@ -16,7 +16,7 @@
           <el-col
             v-for="(book, index) in displayedBooks"
             :key="index"
-            :span="6"
+            :span="columnCount"
             :xs="24"
             :sm="12"
             :md="8"
@@ -164,9 +164,36 @@ import BooksNewDate from "./BookSearchFromNewsDate.vue";
 import BookCartbtn from "./BookCartBtn.vue";
 
 export default defineComponent({
+  //新增
+  data() {
+    return {
+      screenWidth: window.innerWidth, // 獲取視窗寬度
+    };
+  },
+  //
   components: {
     BooksNewDate,
     BookCartbtn,
+  },
+  computed: {
+    columnCount() {
+      if (this.screenWidth < 768) {
+        return 3; // 手機模式下顯示3本
+      } else {
+        return 8;
+      }
+    },
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.handleResize);
+  },
+  methods: {
+    handleResize() {
+      this.screenWidth = window.innerWidth;
+    },
   },
 });
 </script>

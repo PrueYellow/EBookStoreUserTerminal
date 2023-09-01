@@ -18,7 +18,12 @@
           <el-col
             v-for="(book, index) in displayedBooks"
             :key="index"
-            :span="6"
+            :span="columnCount"
+            :xs="24"
+            :sm="12"
+            :md="8"
+            :lg="6"
+            :xl="6"
           >
             <el-card
               :body-style="{ padding: '0px' }"
@@ -166,12 +171,37 @@ import Bookbt from "./Bookbacktop.vue";
 import BookCartbtn from "./BookCartBtn.vue";
 
 export default defineComponent({
+  data() {
+    return {
+      screenWidth: window.innerWidth, // 獲取視窗寬度
+    };
+  },
   components: {
     NavbarC,
     Books,
     BooksNewDate,
     Bookbt,
     BookCartbtn,
+  },
+  computed: {
+    columnCount() {
+      if (this.screenWidth < 768) {
+        return 3; // 手機模式下顯示3本
+      } else {
+        return 8;
+      }
+    },
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.handleResize);
+  },
+  methods: {
+    handleResize() {
+      this.screenWidth = window.innerWidth;
+    },
   },
 });
 </script>

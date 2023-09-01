@@ -42,20 +42,20 @@ builder.Services.AddCors(options =>
 
 //CORS全部開放用上面那段，部分開放用下面這段，用註解切換
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", builder =>
-    {
-        builder.WithOrigins("https://127.0.0.1:8081", "https://127.0.0.1:8080", "https://payment-stage.ecpay.com.tw", "https://127.0.0.1:8080/orders", "https://127.0.0.1:8081/orders")
-               .AllowAnyMethod()
-               .AllowAnyHeader()
-                .AllowCredentials();
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("AllowAll", builder =>
+//    {
+//        builder.WithOrigins("https://127.0.0.1:8081", "https://127.0.0.1:8080", "https://payment-stage.ecpay.com.tw", "https://127.0.0.1:8080/orders", "https://127.0.0.1:8081/orders", "http://127.0.0.1:5174")
+//               .AllowAnyMethod()
+//               .AllowAnyHeader()
+//                .AllowCredentials();
 
-        //builder.WithOrigins("https://127.0.0.1:8081", "https://127.0.0.1:8080", "https://payment-stage.ecpay.com.tw", "https://127.0.0.1:8080/orders", "https://127.0.0.1:8081/orders")
-        //       .AllowAnyMethod()
-        //       .AllowAnyHeader();
-    });
-});
+//        //builder.WithOrigins("https://127.0.0.1:8081", "https://127.0.0.1:8080", "https://payment-stage.ecpay.com.tw", "https://127.0.0.1:8080/orders", "https://127.0.0.1:8081/orders")
+//        //       .AllowAnyMethod()
+//        //       .AllowAnyHeader();
+//    });
+//});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

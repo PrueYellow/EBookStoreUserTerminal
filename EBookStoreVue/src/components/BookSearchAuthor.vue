@@ -32,7 +32,7 @@
               </a>
               <div style="padding: 20px; margin: 16px">
                 <span class="book-title">{{ book.name }}</span>
-                <a :href="`booksearchall?searchString=${book.author}`">{{
+                <a :href="`booksearchauthor?searchString=${book.author}`">{{
                   book.author
                 }}</a
                 ><span> 著</span>

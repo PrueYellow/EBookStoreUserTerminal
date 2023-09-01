@@ -20,7 +20,12 @@
           <el-col
             v-for="(book, index) in displayedBooks"
             :key="index"
-            :span="6"
+            :span="8"
+            :xs="20"
+            :sm="12"
+            :md="8"
+            :lg="6"
+            :xl="6"
           >
             <el-card
               :body-style="{ padding: '0px' }"
@@ -83,7 +88,7 @@ const loadBooks = async () => {
     }
     const datas = await response.json();
     books.value = datas;
-    console.log(books.value);
+    // console.log(books.value);
   } catch (error) {
     console.error("Error loading books:", error);
   }
@@ -134,6 +139,5 @@ export default defineComponent({
 });
 </script>
 
-<style src="../BookCSS/BookCSS.css">
-</style>
+<style src="../BookCSS/BookCSS.css"></style>
   
